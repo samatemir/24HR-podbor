@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>24 HR Подбор</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 50vh 50vh;
+      height: 100vh;
+    }
+    .block {
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .block:nth-child(odd) {
+      background-color: #f3f3f3;
+    }
+    .block h2 {
+      margin-top: 0;
+    }
+    .form input, .form textarea, .form button {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .form button {
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        display: block;
+        height: auto;
+      }
+      .block {
+        min-height: 50vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="block">
+    <h2>О нас</h2>
+    <p>24 HR Подбор — профессиональный экспресс-подбор сотрудников в Москве за 24 часа. Работайте с теми, кто экономит ваше время.</p>
+  </div>
+  <div class="block">
+    <h2>Услуги</h2>
+    <ul>
+      <li>Массовый подбор: курьеры, продавцы, официанты</li>
+      <li>Специалисты: повара, мастера, логисты</li>
+      <li>Гарантия выхода кандидата</li>
+      <li>Работаем с предоплатой</li>
+    </ul>
+  </div>
+  <div class="block">
+    <h2>Прайс</h2>
+    <p>Массовые вакансии — от 3000₽<br>Специалисты — от 8000₽<br>Абонентка — от 10 000₽/мес</p>
+    <p>Быстро. Честно. Без посредников.</p>
+    <p><strong>Предоплата на счёт ВТБ:</strong><br>2204360100172509</p>
+  </div>
+  <div class="block">
+    <h2>Оставить заявку</h2>
+    <form class="form" onsubmit="sendToWhatsApp(); return false;">
+      <input type="text" id="name" placeholder="Ваше имя" required>
+      <input type="text" id="position" placeholder="Кого нужно найти" required>
+      <textarea id="details" placeholder="Подробности (график, з/п, метро)" rows="3" required></textarea>
+      <button type="submit">Отправить в WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById('name').value;
+      const position = document.getElementById('position').value;
+      const details = document.getElementById('details').value;
+      const message = `Заявка на подбор:\nИмя: ${name}\nДолжность: ${position}\nДетали: ${details}`;
+      const phone = "89237369011";
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
